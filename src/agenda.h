@@ -2,23 +2,28 @@
 #define __AGENDA_H__
 
 #define MAX_CONTACTOS 100
+#include <ctype.h>
 
 enum TipoTelefono {CASA, MOVIL, OFICINA, OTRO};
-enum Mes{ENERO, FEBERO, MARZO, ABRIL, MAYO, JUNIO, JULIO, SEPTIEMBRE, OCTUBRE, NOVIEMBRE, DICIEMBRE};
 
-struct Persona{
-    char nombre[30];
-    // apellido
-    // mes de nacimiento
-    // dia de nacimiento
-    // tipo contacto
-    // numero de telefono
-    // tipo de numero
+enum Mes{
+ENERO=1, FEBERO, MARZO, ABRIL, MAYO, JUNIO, JULIO, SEPTIEMBRE, OCTUBRE, NOVIEMBRE, DICIEMBRE
 };
 
-typedef struct Persona Contacto;
+typedef struct Persona{
+char nombre[30];
+char apellido [30];
 
-typedef struct Agenda{
+int dia;
+enum Mes mes;
+
+char tipo_contacto [20];
+char telefono [20];
+
+int tipo_telefono;
+} Contacto;
+
+typedef struct Agenda {
     Contacto contactos[MAX_CONTACTOS];
     int num_contactos; //Lleva la cuenta de cuantos contactos están en la agenda
 } Agenda;
