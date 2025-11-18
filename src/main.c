@@ -55,6 +55,50 @@ int main(){
     break;
 
     case 4:
+       printf("Telefono a buscar: ");
+          fgets(telefono_buscar, 20, stdin);
+          telefono_buscar[strcspn(telefono_buscar, "\n")] = 0;
+
+           pos = buscar_contacto_x_telefono(&agenda, telefono_buscar);
+
+          if (pos >= 0)
+              mostrar_contacto(agenda.contactos[pos]);
+          else
+              printf("No se encontro el numero.\n");
+          break;
+
+      case 5:
+          guardar_contactos((char *)archivo, agenda);
+          break;
+
+      case 6:
+          cargar_contactos((char *)archivo, &agenda);
+          break;
+
+      case 7:
+          ordenar_contactos(&agenda);
+          printf("Contactos ordenados A-Z.\n");
+          break;
+
+      case 8:
+          ordenar_contactos_inv(&agenda);
+          printf("Contactos ordenados Z-A.\n");
+          break;
+
+      case 0:
+          printf("Saliendo...\n");
+          break;
+
+        default:
+          printf("Opcion no valida.\n");
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
+
 
 
     
+
